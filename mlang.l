@@ -4,12 +4,21 @@
 
 %%
 [0-9]+          { yylval.num = atoi(yytext); return NUMBER; }
+
 "if"            { return IF; }
 "then"          { return THEN; }
+"else"          { return ELSE; }
 "for"           { return FOR; }
 "to"            { return TO; }
+"def"           { return DEF; }
 "print"         { return PRINT; }
-[a-zA-Z]+       { yylval.str = strdup(yytext); return ID; }
+
+"("             { return '('; }
+")"             { return ')'; }
+"{"             { return '{'; }
+"}"             { return '}'; }
+","             { return ','; }
+
 ">"             { return GT; }
 "<"             { return LT; }
 "="             { return EQ; }
@@ -17,6 +26,10 @@
 "-"             { return MINUS; }
 "*"             { return MUL; }
 "/"             { return DIV; }
-[ \t\n]         ;  // Ignore spaces
+
+[a-zA-Z_][a-zA-Z0-9_]*  { yylval.str = strdup(yytext); return ID; }
+
+[ \t\r\n]+      ; // Ignore whitespace
+
 .               { return yytext[0]; }
 %%

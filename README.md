@@ -6,18 +6,25 @@ A minimal interpreted language created for learning compiler design, inspired by
 
 ```c
 // test.ml
-# Variable assignment
-x = 10;
-y = 2;
+x = 5;
 
-# Arithmetic operations
-z = x + y * 3;
+if x > 0 then {
+    print x;
+    print x + 1;
+}
 
-# Conditional
-if z > 15 then print z;
+for i = 1 to 3 then {
+    print i;
+    print i * i;
+}
 
-# For loop from 1 to 5
-for i = 1 to 5 then print i;
+def add(a, b) {
+    print a + b;
+}
+
+a = 2;
+b = 3;
+add(a, b);
 ```
 
 > Remove comments before run.
